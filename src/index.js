@@ -1,30 +1,24 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const route = require("./routes/route");
-const { default: mongoose } = require("mongoose");
+const express = require('express');
+const bodyParser = require('body-parser');
+const route = require('../src/routes/route');
+const { default: mongoose } = require('mongoose');
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-
-
-mongoose.connect("mongodb+srv://Jyoti273-db:djukOqR9QbI5Itvc@cluster0.nzuylps.mongodb.net/Project-3_Book-Management-db", {
-  useNewUrlParser: true
+mongoose.connect("mongodb+srv://divyani_122:Jauwfm2RmhdpBUMR@cluster0.g956m32.mongodb.net/divyani-DB", {
+    useNewUrlParser: true
 })
-  .then(() => console.log("MongoDb is connected"))
-  .catch((err) => console.log(err));
+.then( () => console.log("MongoDb is connected"))
+.catch ( err => console.log(err) )
+
+app.use('/', route)
 
 
-
-app.use("/", route);
-
-
-
-
-app.listen(process.env.PORT || 3000, function () {
-  console.log("Express app running on port " + (process.env.PORT || 3000));
+app.listen(process.env.PORT || 3002, function () {
+    console.log('Express app running on port ' + (process.env.PORT ||3002 ))
 });
 
 
